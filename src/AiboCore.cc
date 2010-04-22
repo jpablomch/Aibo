@@ -119,7 +119,10 @@ AiboCore::AiboCore(ConfigFile* cf, int section)
     if(strncmp(proto, "TCP", 4) == 0){
 	cam.connect(ip);
     }else{
+      
       cam.connect_udp(ip);
+      cam.aibolink->send_data('n', 0);
+      printf("Dummy Packet sent");
     }
 
     ++AiboCore::aibo_count;
